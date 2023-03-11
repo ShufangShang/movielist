@@ -7,7 +7,8 @@ class MovieCollection extends Component {
     super();
     this.state =
     {
-        movies: [
+        movies: []
+        /* movies: [
           {title: "Hard Boiled", decription: "Hard Boiled is a 1992 Hong Kong action thriller film.", year: "1992", genre: "Action"},
           {title: "he Flight of Dragons", decription: "The Flight of Dragons is animated fantasy film.", year: "1982", genre: "Animation"},
           {title: "Charlie’s Angels", decription: "A team of female private agents, popularly known as Charlie’s Angels.", year: "2000", genre: "Comedy"}, 
@@ -15,7 +16,7 @@ class MovieCollection extends Component {
           {title: "Movie 5", decription: "Movie 5 description.", year: "2005", genre: "Fantasy"},
           {title: "Movie 6", decription: "Movie 6 description.", year: "2020", genre: "Fantasy"}   
               
-        ]     
+        ]     */ 
     };
 
   }
@@ -25,10 +26,11 @@ class MovieCollection extends Component {
   addMovie() {
     this.state.movies.push(
       {
-        title: "New Movie Title",
+        id: Date.now()
+        /* title: "New Movie Title",
         description: "New Movie Description",
         year: "New Movie year",
-        gener: "New Movie Genre"
+        gener: "New Movie Genre" */
       }
     );
     this.setState(
@@ -37,7 +39,21 @@ class MovieCollection extends Component {
       }
     );
   }
-  
+
+  deleteMovie(id){
+    let newMovieArr = this.state.movies;
+    newMovieArr.map((movie, index) => {
+      if (id === movie.id) {
+        newMovieArr.splice(index,1);
+      }
+    });
+    this.setState(
+      {
+        movies: newMovieArr
+      }
+    );
+  }
+
 
   render() {
     return (
@@ -45,9 +61,12 @@ class MovieCollection extends Component {
         <div className="div-movies">
           <div className="row">
             {
-               this.state.movies.map(movie => {
-                return <Movie title={movie.title} decription={movie.description} year={movie.year} gener={movie.genre}/>
+              this.state.movies.map(movie => {
+                return <Movie key={movie.id} id={movie.id} deleteHandler={this.deleteMovie.bind(this)} />
               })
+               /* this.state.movies.map(movie => {
+                return <Movie title={movie.title} decription={movie.description} year={movie.year} gener={movie.genre}/>
+              }) */
             }
           </div>
         </div>

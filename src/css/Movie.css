@@ -8,4 +8,26 @@
     max-height: 20vh; /*not want to take all vertical space*/
     object-fit: contain;/*show all image, autosized, no cut, in available space*/
     margin-top: 1em;
+  } 
+  
+  .description-textarea {
+    resize: none;
+    width: 100%;
+  }
+  
+  .year-textarea {
+    resize: none;
+    width: 100%;
+  }
+
+  .genre-textarea {
+    resize: none;
+    width: 100%;
+  }
+
+  .title-textarea {
+    font-size: 24px;
+    font-weight: bold;
+    resize: none;
+    width: 100%;
   }
